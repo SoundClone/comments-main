@@ -36,7 +36,7 @@ class CmtListItem extends React.Component {
     // FUV
     let props = this.props;
     let cmt = this.props.cmt;
-    console.log(props.uid, props.aid, typeof props.uid);
+    // console.log(props.uid, props.aid, typeof props.uid);
 
     return (
       <FlexContainer>
