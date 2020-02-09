@@ -18,4 +18,4 @@ app.use('/api', [routesGET]);
 
 // Initialisation
 const port = 3001;
-app.listen(port, () => { console.log(`listening on http://localhost:${port}`); });
+app.listen(port, () => { console.log(`listening on ${port}`); });

@@ -57,7 +57,6 @@ class CmtList extends React.Component {
   }
 
   render () {
-    console.log('lifecycle from CmtList intiated!');
     return (
       <div>
         <TotalCmts>
