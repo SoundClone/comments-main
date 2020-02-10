@@ -11,7 +11,7 @@
     "url": "git+https://github.com/SoundClone/comments-main.git"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -p",
     "start": "nodemon server/index.js",
     "mongo-seed": "node db/seedScript.js",
     "test": "jest"
