@@ -55,7 +55,6 @@ class App extends React.Component {
     // FUV
     let state = this.state;
     let lazyLoad = state.comments.slice(0, state.lazyi);
-    console.log('length of the lazy load comments array: ', lazyLoad.length);
 
     return (
       <AppContainer>

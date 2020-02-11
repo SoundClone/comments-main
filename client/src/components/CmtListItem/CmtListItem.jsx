@@ -1,18 +1,23 @@
 // Setup
 import React from 'react';
-import UsernameContainer from '../UsernameContainer.jsx';
-import AvatarContainer from '../AvatarContainer.jsx';
+import UsernameContainer from './UsernameContainer.jsx';
+import AvatarContainer from './AvatarContainer.jsx';
 const moment = require('moment');
 
-import { CommentDiv, Lta, Xlt, FlexContainer, Lts, CommentBody } from './CmtListItemStyle.js';
+import { CommentDiv, TopBarDiv, Lta, Xlt, FlexContainer, Lts, CommentBody, ReplyBtn, ReplyIcon, Ts } from './CmtListItemStyle.js';
 
 // CmtListItem
 class CmtListItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isHovered: false
+    };
+
     this.friendlyTimestamp = this.friendlyTimestamp.bind(this);
     this.friendlyDate = this.friendlyDate.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   friendlyTimestamp (timestamp) {
@@ -32,25 +37,39 @@ class CmtListItem extends React.Component {
     return moment(date).fromNow();
   }
 
+  handleHover() {
+    this.setState({
+      isHovered: !this.state.isHovered
+    });
+  }
+
   render() {
     // FUV
     let props = this.props;
     let cmt = this.props.cmt;
+    console.log(this.state.isHovered);
 
     return (
       <FlexContainer>
+        <AvatarContainer cmt={cmt}/><span></span>
 
-        <AvatarContainer aid={props.aid} cmt={cmt}/><span></span>
+        <CommentDiv onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
 
-        <CommentDiv>
-
-          <div>
-            <UsernameContainer uid={props.uid} cmt={cmt} />
+          <TopBarDiv>
+            <UsernameContainer cmt={cmt} />
             <Xlt> at </Xlt>
             <Lta>{this.friendlyTimestamp(cmt.timeData.timestamp)}</Lta>
             <Xlt>:</Xlt>
             <Lts>{this.friendlyDate(cmt.timeData.postDate)}</Lts>
-          </div>
+            {this.state.isHovered ?
+
+              <ReplyBtn><ReplyIcon className="material-icons md-48">reply</ReplyIcon><Ts>Reply</Ts></ReplyBtn>
+
+              :
+
+              <ReplyBtn></ReplyBtn>
+            }
+          </TopBarDiv>
 
           <CommentBody>{cmt.commentBody}</CommentBody>
 
