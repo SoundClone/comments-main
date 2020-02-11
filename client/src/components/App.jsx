@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.getComments = this.getComments.bind(this);
     this.calcTotalComments = this.calcTotalComments.bind(this);
+    this.updateLazyLoad = this.updateLazyLoad.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,12 @@ class App extends React.Component {
     });
   }
 
+  updateLazyLoad() {
+    this.setState({
+      lazyi: this.state.lazyi += 12
+    });
+  }
+
   render() {
     // FUV
     let state = this.state;
@@ -56,7 +63,7 @@ class App extends React.Component {
         <CmtList
           comments={lazyLoad}
           totalComments={state.totalComments}
-          lazyi={state.lazyi}
+          updateLazyLoad={this.updateLazyLoad}
           id="CmtList"
         />
 

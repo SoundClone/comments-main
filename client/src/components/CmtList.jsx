@@ -40,8 +40,7 @@ class CmtList extends React.Component {
   handleScroll() {
     let element = document.getElementById('scroll-mark');
     if (this.isBottom(element)) {
-      console.log(this.props);
-      // document.removeEventListener('scroll', this.handleScroll);
+      this.props.updateLazyLoad();
     }
   }
 
