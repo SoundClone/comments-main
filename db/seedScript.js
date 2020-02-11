@@ -34,7 +34,7 @@ let output = (z) => {
 
 commentModel.create({
   songId: 1,
-  comments: output(35)
+  comments: output(129)
 });
 
 console.log('The database has been populated.');

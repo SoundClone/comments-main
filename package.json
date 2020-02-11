@@ -21,6 +21,7 @@
     "axios": "^0.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.24.0",
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
