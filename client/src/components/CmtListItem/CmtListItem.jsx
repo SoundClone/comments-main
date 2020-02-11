@@ -2,6 +2,8 @@
 import React from 'react';
 import UsernameContainer from './UsernameContainer.jsx';
 import AvatarContainer from './AvatarContainer.jsx';
+import Reply from './Reply.jsx';
+
 const moment = require('moment');
 
 import { CommentDiv, TopBarDiv, Lta, Xlt, FlexContainer, Lts, CommentBody, ReplyBtn, ReplyIcon, Ts } from './CmtListItemStyle.js';
@@ -12,12 +14,14 @@ class CmtListItem extends React.Component {
     super(props);
 
     this.state = {
-      isHovered: false
+      isHovered: false,
+      isReply: false
     };
 
     this.friendlyTimestamp = this.friendlyTimestamp.bind(this);
     this.friendlyDate = this.friendlyDate.bind(this);
     this.handleHover = this.handleHover.bind(this);
+    this.onReplyClick = this.onReplyClick.bind(this);
   }
 
   friendlyTimestamp (timestamp) {
@@ -37,6 +41,12 @@ class CmtListItem extends React.Component {
     return moment(date).fromNow();
   }
 
+  onReplyClick() {
+    this.setState({
+      isReply: !this.state.isReply
+    });
+  }
+
   handleHover() {
     this.setState({
       isHovered: !this.state.isHovered
@@ -47,7 +57,7 @@ class CmtListItem extends React.Component {
     // FUV
     let props = this.props;
     let cmt = this.props.cmt;
-    console.log(this.state.isHovered);
+    console.log(this.state.isReply);
 
     return (
       <FlexContainer>
@@ -62,17 +72,17 @@ class CmtListItem extends React.Component {
             <Xlt>:</Xlt>
             <Lts>{this.friendlyDate(cmt.timeData.postDate)}</Lts>
             {this.state.isHovered ?
-
-              <ReplyBtn><ReplyIcon className="material-icons md-48">reply</ReplyIcon><Ts>Reply</Ts></ReplyBtn>
-
-              :
-
-              <ReplyBtn></ReplyBtn>
+              <ReplyBtn onClick={this.onReplyClick}><ReplyIcon className="material-icons md-48">reply</ReplyIcon><Ts>Reply</Ts></ReplyBtn> :
+              <div></div>
             }
           </TopBarDiv>
 
           <CommentBody>{cmt.commentBody}</CommentBody>
-
+          {
+            this.state.isReply ?
+              <Reply /> :
+              <div></div>
+          }
         </CommentDiv>
       </FlexContainer>
     );
