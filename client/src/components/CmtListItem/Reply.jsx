@@ -8,7 +8,7 @@ const ReplyWrapper = styled.div`
 `;
 
 const ReplyField = styled.input`
-   width: 100%;
+  width: 96%;
   background: #fff;
   padding: 0 9px;
   font-size: 12px;

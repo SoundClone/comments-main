@@ -21,9 +21,7 @@ The comments-section service for SoundClone
 From within the root directory:
 
 ```sh
-$ npm install -g webpack
-
-$ npm install
+$ npm i
 ```
 
 ### Seeding database
@@ -50,8 +48,6 @@ $ npm run mongo-seed
 Bundle files & start server
 
 ```sh
-$ npm run bundle
-$ npm run server
+$ npm run react-prod
+$ npm run start
 ```
-
-Open in http://localhost:3001/
