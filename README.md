@@ -51,3 +51,8 @@ Bundle files & start server
 $ npm run react-prod
 $ npm run start
 ```
+
+### Advice
+
+- When you're trying to read the code, don't worry about the CSS styling. Don't change it. No touchy. It's a mess, but it's _my_ mess.
+-

@@ -1,3 +1,4 @@
+// A car crash of CSS components live here. You might want to look away for this...
 import styled from 'styled-components';
 
 export const FlexContainer = styled.div`

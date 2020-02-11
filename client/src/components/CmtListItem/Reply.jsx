@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Reply box border
 const ReplyWrapper = styled.div`
   padding: 5px;
   background: #f2f2f2;
   border: 1px solid #e5e5e5;
 `;
 
+// Text input field
 const ReplyField = styled.input`
   width: 96%;
   background: #fff;
@@ -19,13 +21,14 @@ const ReplyField = styled.input`
   font-family: inherit;
 `;
 
+// Renders the reply box component
 class Reply extends React.Component {
   constructor(props) {
     super(props);
+  }
 
-    this.state = {
-      isHovered: false
-    };
+  handleReplyPost() {
+    // TODO: dear SDC coder, you may need to fill this out? idk
   }
 
   render() {

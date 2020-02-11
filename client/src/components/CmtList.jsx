@@ -28,6 +28,7 @@ const LoadingGIF = styled.img`
   visibility: hidden;
 `;
 
+// Renders the comments list
 class CmtList extends React.Component {
   constructor(props) {
     super(props);
@@ -44,12 +45,13 @@ class CmtList extends React.Component {
     document.removeEventListener('scroll', this.handleScroll);
   }
 
+  // Returns true if user is at bottom of page
   isBottom(el) {
     return el.getBoundingClientRect().bottom <= window.innerHeight;
   }
 
+  // If the user scrolled to the bottom, fetch another 12 comments from parent state
   handleScroll() {
-    // If the user scrolled to the bottom, fetch another 12 comments from parent state
     let element = document.getElementById('scroll-mark');
     if (this.isBottom(element)) {
       document.getElementById('loadgif').style.visibility = 'visible';
@@ -59,22 +61,19 @@ class CmtList extends React.Component {
   }
 
   render () {
-    // FUV
-    let props = this.props;
-
     return (
       <div id="scroll-mark">
         <TotalCmts>
-          <span><Cmti className="material-icons md-48" id="cmt-i" >chat_bubble</Cmti> {props.totalComments} comments</span>
+          <span><Cmti className="material-icons md-48" id="cmt-i" >chat_bubble</Cmti> {this.props.totalComments} comments</span>
         </TotalCmts>
 
         <CommentDiv>
-          {props.comments.map((el, idx) => {
+          {this.props.comments.map((el, idx) => {
             return <CmtListItem cmt={el} key={idx} />;
           })}
         </CommentDiv>
 
-        <LoadingGIF id="loadgif" src="https://lh3.googleusercontent.com/proxy/htiSQTgwPcK0b4tnuoKFNJNcGmGN9kORK0WNMBwaJ6iktA4lnAUFMUn7wzGKd-HFer8x-4oc_V1ramR4KJ_8lnMupRzdvjLOIvzG_DjaZ4IJuNh3RMlLzNdcuPal5GZk"></LoadingGIF>
+        <LoadingGIF id="loadgif" src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif"></LoadingGIF>
 
       </div>
     );

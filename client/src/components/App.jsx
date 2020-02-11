@@ -15,8 +15,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      // data store
       comments: [],
+      // total comments for each song
       totalComments: null,
+      // determines how many comments will be passed down to CmtList
       lazyi: 12
     };
 
@@ -45,6 +48,8 @@ class App extends React.Component {
     });
   }
 
+  // This function gets fired in the CmtList component when the user scrolls to the bottom
+  // of the page. It re-renders the comments, with an additional 12 comments to the list
   updateLazyLoad() {
     this.setState({
       lazyi: this.state.lazyi += 12
@@ -52,16 +57,13 @@ class App extends React.Component {
   }
 
   render() {
-    // FUV
-    let state = this.state;
-    let lazyLoad = state.comments.slice(0, state.lazyi);
-
+    let lazyLoad = this.state.comments.slice(0, this.state.lazyi);
     return (
       <AppContainer>
 
         <CmtList
           comments={lazyLoad}
-          totalComments={state.totalComments}
+          totalComments={this.state.totalComments}
           updateLazyLoad={this.updateLazyLoad}
           id="CmtList"
         />

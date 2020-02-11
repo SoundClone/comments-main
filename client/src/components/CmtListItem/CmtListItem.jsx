@@ -1,4 +1,3 @@
-// Setup
 import React from 'react';
 import UsernameContainer from './UsernameContainer.jsx';
 import AvatarContainer from './AvatarContainer.jsx';
@@ -8,13 +7,15 @@ const moment = require('moment');
 
 import { CommentDiv, TopBarDiv, Lta, Xlt, FlexContainer, Lts, CommentBody, ReplyBtn, ReplyIcon, Ts } from './CmtListItemStyle.js';
 
-// CmtListItem
+// Render the individual comment entries
 class CmtListItem extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      // If true, render the <ReplyBtn /> tag
       isHovered: false,
+      // If true, render the <Reply> component
       isReply: false
     };
 
@@ -24,6 +25,7 @@ class CmtListItem extends React.Component {
     this.onReplyClick = this.onReplyClick.bind(this);
   }
 
+  // Human friendly timestamp
   friendlyTimestamp (timestamp) {
     let min = 0;
     let sec = 0;
@@ -37,6 +39,7 @@ class CmtListItem extends React.Component {
     return `${min}:${sec}`;
   }
 
+  // Human friendly date
   friendlyDate(date) {
     return moment(date).fromNow();
   }
@@ -54,10 +57,9 @@ class CmtListItem extends React.Component {
   }
 
   render() {
-    // FUV
+    // FUV (Frequently Used Variables)
     let props = this.props;
     let cmt = this.props.cmt;
-    console.log(this.state.isReply);
 
     return (
       <FlexContainer>
@@ -71,18 +73,32 @@ class CmtListItem extends React.Component {
             <Lta>{this.friendlyTimestamp(cmt.timeData.timestamp)}</Lta>
             <Xlt>:</Xlt>
             <Lts>{this.friendlyDate(cmt.timeData.postDate)}</Lts>
-            {this.state.isHovered ?
-              <ReplyBtn onClick={this.onReplyClick}><ReplyIcon className="material-icons md-48">reply</ReplyIcon><Ts>Reply</Ts></ReplyBtn> :
-              <div></div>
+
+            {/* Conditional render for reply button hover */}
+            {
+              this.state.isHovered
+                ?
+                <ReplyBtn onClick={this.onReplyClick}>
+                  <ReplyIcon className="material-icons md-48">reply</ReplyIcon>
+                  <Ts>Reply</Ts>
+                </ReplyBtn>
+                :
+                <div></div>
             }
+
           </TopBarDiv>
 
           <CommentBody>{cmt.commentBody}</CommentBody>
+
+          {/* Conditional render for reply box */}
           {
-            this.state.isReply ?
-              <Reply /> :
+            this.state.isReply
+              ?
+              <Reply />
+              :
               <div></div>
           }
+
         </CommentDiv>
       </FlexContainer>
     );
