@@ -54,4 +54,4 @@ $ npm run start
 
 ### Advice
 
-- When you're trying to read the code, don't worry about the CSS styling. Just don't worry about it. Don't change it. No touchy. You should probably not even open the styling file. It's a mess, but it's _my_ mess.
+- When you're trying to read the code, don't worry about the CSS styling. Just don't worry about it. No touchy. Don't even open the styling file. It's a mess, but it's _my_ mess.
