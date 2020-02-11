@@ -56,6 +56,7 @@ class App extends React.Component {
         <CmtList
           comments={lazyLoad}
           totalComments={state.totalComments}
+          lazyi={state.lazyi}
           id="CmtList"
         />
 
